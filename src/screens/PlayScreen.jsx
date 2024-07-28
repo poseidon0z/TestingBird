@@ -37,11 +37,21 @@ function PlayScreen({}) {
   const availableHeight =
     document.documentElement.clientHeight * (1 - floorRatio);
   const totem_height = (availableHeight - gap) / 2;
-  const birdLeft = document.documentElement.clientWidth * 0.05;
-  const gravity = 1;
-  const obstacleCount = 4;
-  const totemGap = 750;
-  const jumpVelociy = -10;
+  const birdLeft = localStorage.getItem('birdLeft')
+    ? localStorage.getItem('birdLeft')
+    : document.documentElement.clientWidth * 0.05;
+  const gravity = localStorage.getItem('gravity')
+    ? localStorage.getItem('gravity')
+    : 1;
+  const obstacleCount = localStorage.getItem('obstacleCount')
+    ? localStorage.getItem('obstacleCount')
+    : 4;
+  const totemGap = localStorage.getItem('totemGap')
+    ? localStorage.getItem('totemGap')
+    : 750;
+  const jumpVelociy = localStorage.getItem('jumpVelocity')
+    ? localStorage.getItem('jumpVelocity')
+    : -10;
 
   const [gameStopped, setGameStopped] = useState(true);
   const [distance, setDistance] = useState(0);

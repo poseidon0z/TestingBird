@@ -66,19 +66,21 @@ const AdminSettings = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
+    <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500">
       {!isLoggedIn ? (
-        <div className="w-full max-w-xs p-6 bg-white rounded shadow-md">
-          <h2 className="mb-6 text-2xl font-semibold text-center">Login</h2>
+        <div className="w-full max-w-sm p-8 bg-white rounded-lg shadow-lg">
+          <h2 className="mb-6 text-3xl font-semibold text-center text-gray-800">
+            Admin Login
+          </h2>
           <form onSubmit={handleLogin}>
             <label
-              className="block mb-2 text-sm font-bold text-gray-700"
+              className="block mb-2 text-sm font-medium text-gray-700"
               htmlFor="username"
             >
               Username:
             </label>
             <input
-              className="w-full px-3 py-2 mb-4 border rounded shadow appearance-none"
+              className="w-full px-4 py-2 mb-4 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200 focus:outline-none"
               type="text"
               id="username"
               value={username}
@@ -86,13 +88,13 @@ const AdminSettings = () => {
               required
             />
             <label
-              className="block mb-2 text-sm font-bold text-gray-700"
+              className="block mb-2 text-sm font-medium text-gray-700"
               htmlFor="password"
             >
               Password:
             </label>
             <input
-              className="w-full px-3 py-2 mb-6 border rounded shadow appearance-none"
+              className="w-full px-4 py-2 mb-6 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200 focus:outline-none"
               type="password"
               id="password"
               value={password}
@@ -100,7 +102,7 @@ const AdminSettings = () => {
               required
             />
             <button
-              className="w-full px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700"
+              className="w-full px-4 py-2 font-bold text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"
               type="submit"
             >
               Login
@@ -108,19 +110,21 @@ const AdminSettings = () => {
           </form>
         </div>
       ) : (
-        <div className="w-full max-w-xs p-6 bg-white rounded shadow-md">
-          <h2 className="mb-6 text-2xl font-semibold text-center">Settings</h2>
+        <div className="w-full max-w-sm p-8 bg-white rounded-lg shadow-lg">
+          <h2 className="mb-6 text-3xl font-semibold text-center text-gray-800">
+            Settings
+          </h2>
           <form onSubmit={handleSettingsSave}>
             {Object.keys(initialSettings).map((key) => (
               <div key={key} className="mb-4">
                 <label
-                  className="block mb-2 text-sm font-bold text-gray-700"
+                  className="block mb-2 text-sm font-medium text-gray-700"
                   htmlFor={key}
                 >
                   {key.charAt(0).toUpperCase() + key.slice(1)}:
                 </label>
                 <input
-                  className="w-full px-3 py-2 border rounded shadow appearance-none"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring focus:ring-blue-200 focus:outline-none"
                   type={
                     typeof initialSettings[key] === 'number' ? 'number' : 'text'
                   }
@@ -131,7 +135,7 @@ const AdminSettings = () => {
               </div>
             ))}
             <button
-              className="w-full px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700"
+              className="w-full px-4 py-2 font-bold text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75"
               type="submit"
             >
               Save
