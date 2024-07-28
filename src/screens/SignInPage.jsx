@@ -38,31 +38,31 @@ const SignInPage = ({ setStayAnonymous, setLoggedIn }) => {
   let [isSigningIn, setIsSigningIn] = useState(false);
   let [errorMessage, setErrorMessage] = useState('');
 
-  const handleSignIn = () => {
-    setIsSigningIn(true);
-    signInWithPopup(auth, provider)
-      .then(async (result) => {
-        const nameArr = result.user.displayName.split(' ');
-        const name = nameArr[0] + ' ' + nameArr[1];
-        setPlayerName(name);
-        localStorage.setItem('UserInfo', name);
-        console.log('User info:', name);
-        await submitScore(name, currentScore);
-        console.log('submitted');
-        localStorage.setItem('isLoggedIn', 'true');
-        localStorage.setItem('stayAnonymous', 'false');
-        navigate('/leaderboard');
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log('Error code:', errorCode);
-        console.log('Error message:', errorMessage);
-        setErrorMessage(errorMessage);
-        setIsSigningIn(false);
-        setStayAnonymous(false);
-      });
-  };
+  // const handleSignIn = () => {
+  //   setIsSigningIn(true);
+  //   signInWithPopup(auth, provider)
+  //     .then(async (result) => {
+  //       const nameArr = result.user.displayName.split(' ');
+  //       const name = nameArr[0] + ' ' + nameArr[1];
+  //       setPlayerName(name);
+  //       localStorage.setItem('UserInfo', name);
+  //       console.log('User info:', name);
+  //       await submitScore(name, currentScore);
+  //       console.log('submitted');
+  //       localStorage.setItem('isLoggedIn', 'true');
+  //       localStorage.setItem('stayAnonymous', 'false');
+  //       navigate('/leaderboard');
+  //     })
+  //     .catch((error) => {
+  //       const errorCode = error.code;
+  //       const errorMessage = error.message;
+  //       console.log('Error code:', errorCode);
+  //       console.log('Error message:', errorMessage);
+  //       setErrorMessage(errorMessage);
+  //       setIsSigningIn(false);
+  //       setStayAnonymous(false);
+  //     });
+  // };
 
   const newAnonymous = async () => {
     const name = playerName;
@@ -102,7 +102,7 @@ const SignInPage = ({ setStayAnonymous, setLoggedIn }) => {
           <button
             id="google-auth-btn"
             className="z-[20] h-[60px] w-[240px] md:h-[70px] md:w-[310px] lg:w-[310px] bg-yellow-400 rounded-[50px] flex items-center justify-center px-4 hover:bg-green-800 hover:text-white"
-            onClick={handleSignIn}
+            onClick={newAnonymous}
           >
             <img
               src={GoogleIcon}
