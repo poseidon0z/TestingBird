@@ -1,9 +1,5 @@
 import React, { useState } from 'react';
-import {
-  auth,
-  provider,
-  signInWithPopup,
-} from '../../../Server/src/firebase/firebase';
+
 import { useNavigate } from 'react-router-dom';
 import { useGameContext } from '../contexts/gameContext';
 
